@@ -19,11 +19,15 @@ public class Delivery {
 
     @PostUpdate
     public void onPostUpdate(){
-
-        System.out.println("this job ***********************8");
         Delivered delivered = new Delivered();
         BeanUtils.copyProperties(this, delivered);
         delivered.publishAfterCommit();
+
+        try {
+            Thread.sleep((long) (400 + Math.random() * 300));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }
