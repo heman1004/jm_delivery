@@ -17,37 +17,12 @@ public class Delivery {
     private String courierName;
     private Long memberId;
 
-    @PostPersist
-    public void onPostPersist(){
-
-        try {
-            Thread.sleep((long) (400 + Math.random() * 300));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Delivered delivered = new Delivered();
-        BeanUtils.copyProperties(this, delivered);
-        delivered.publishAfterCommit();
-
-    }
-
-
     @PostUpdate
     public void onPostUpdate(){
 
-        try {
-            Thread.sleep((long) (400 + Math.random() * 300));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         Delivered delivered = new Delivered();
         BeanUtils.copyProperties(this, delivered);
         delivered.publishAfterCommit();
-
-
-
 
     }
 
